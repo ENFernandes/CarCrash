@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Game {
-    public static final int MANUFACTURED_CARS = 20000;
+    public static final int MANUFACTURED_CARS = 20;
     /** Container of Cars */
     private Car[] cars;
     /** Animation delay */
@@ -50,9 +50,15 @@ public class Game {
 
                 if (c[i].equals(c[y])&&i!=y) {
                     c[i].setCrashed(true);
+                    c[y].setCrashed(true);
                 }
+
             }
-            c[i].getPos().move();
+            if (c[i].isCrashed() == true) {
+
+            } else {
+                c[i].move();
+            }
         }
     }
 }
