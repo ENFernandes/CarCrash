@@ -1,5 +1,6 @@
 package org.academiadecodigo.carcrash.cars;
 
-public class Renault extends Car{
+public class V extends Car{
+
 
 }

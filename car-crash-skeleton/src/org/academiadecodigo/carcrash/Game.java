@@ -3,17 +3,17 @@ package org.academiadecodigo.carcrash;
 import org.academiadecodigo.carcrash.cars.Car;
 import org.academiadecodigo.carcrash.cars.CarFactory;
 import org.academiadecodigo.carcrash.field.Field;
+import org.academiadecodigo.carcrash.field.Position;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Game {
-
-    public static final int MANUFACTURED_CARS = 2;
-
+    public static final int MANUFACTURED_CARS = 20000;
     /** Container of Cars */
     private Car[] cars;
-
     /** Animation delay */
     private int delay;
-
     public Game(int cols, int rows, int delay) {
         Field.init(cols, rows);
         this.delay = delay;
@@ -28,31 +28,31 @@ public class Game {
         }
         Field.draw(cars);
     }
-
     /**
      * Starts the animation
      *
      * @throws InterruptedException
      */
     public void start() throws InterruptedException {
-
         while (true) {
-
             // Pause for a while
             Thread.sleep(delay);
-
             // Move all cars
-            moveAllCars();
-
+            moveAllCars(cars);
             // Update screen
             Field.draw(cars);
-
         }
-
     }
+    private void moveAllCars(Car[] c) {
+        for(int i =0;i<c.length;i++)
+        {
+            for(int y = 1;y<c.length;y++) {
 
-    private void moveAllCars() {
-        cars.toString();
+                if (c[i].equals(c[y])&&i!=y) {
+                    c[i].setCrashed(true);
+                }
+            }
+            c[i].getPos().move();
+        }
     }
-
 }

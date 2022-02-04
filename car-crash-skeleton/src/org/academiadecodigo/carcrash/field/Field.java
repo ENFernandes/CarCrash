@@ -8,20 +8,15 @@ import com.googlecode.lanterna.terminal.Terminal;
 import org.academiadecodigo.carcrash.cars.Car;
 
 public final class Field {
-
     private static int width;
     private static int height;
-
     // Used to write to screen
     private static Screen screen;
-
     // Screen wrapper that preserves default options
     private static ScreenWriter screenWriter;
-
     //This class is not supposed to be instantiated
     private Field() {
     }
-
     /**
      * Initializes the Screen
      * @param width screen width
@@ -47,7 +42,6 @@ public final class Field {
         screen.startScreen();
 
     }
-
     /**
      * Displays a group of cars in the screen
      * @param cars an array of cars

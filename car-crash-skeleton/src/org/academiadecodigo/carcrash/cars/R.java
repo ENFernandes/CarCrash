@@ -1,6 +1,5 @@
 package org.academiadecodigo.carcrash.cars;
 
-public class Volvo extends Car{
-
+public class R extends Car{
 
 }
