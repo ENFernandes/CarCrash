@@ -3,8 +3,8 @@ package org.academiadecodigo.carcrash.cars;
 public class CarFactory {
 
     public static Car getNewCar() {
-        V v = new V();
-        R r = new R();
+        Car v = new Bois();
+        Car r = new Vaca();
 
         r.equals(v);
 

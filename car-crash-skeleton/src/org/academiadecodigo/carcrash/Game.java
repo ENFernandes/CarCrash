@@ -3,10 +3,6 @@ package org.academiadecodigo.carcrash;
 import org.academiadecodigo.carcrash.cars.Car;
 import org.academiadecodigo.carcrash.cars.CarFactory;
 import org.academiadecodigo.carcrash.field.Field;
-import org.academiadecodigo.carcrash.field.Position;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 public class Game {
     public static final int MANUFACTURED_CARS = 20;
@@ -18,6 +14,9 @@ public class Game {
         Field.init(cols, rows);
         this.delay = delay;
     }
+
+
+
     /**
      * Creates a bunch of cars and randomly puts them in the field
      */
@@ -43,7 +42,7 @@ public class Game {
             Field.draw(cars);
         }
     }
-    private void moveAllCars(Car[] c) {
+    private void moveAllCars(Car[] c) throws InterruptedException {
         for(int i =0;i<c.length;i++)
         {
             for(int y = 1;y<c.length;y++) {
@@ -52,12 +51,10 @@ public class Game {
                     c[i].setCrashed(true);
                     c[y].setCrashed(true);
                 }
-
             }
             if (c[i].isCrashed() == true) {
-
             } else {
-                c[i].move();
+                c[i].sCar();
             }
         }
     }

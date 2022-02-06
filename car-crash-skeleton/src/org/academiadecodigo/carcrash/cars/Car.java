@@ -1,35 +1,54 @@
 package org.academiadecodigo.carcrash.cars;
-
 import org.academiadecodigo.carcrash.field.Position;
-
 import java.util.Objects;
+
 abstract  public class Car {
     /** The position of the car on the grid */
-
     private Position pos=new Position();
+    private int andamento=10;
     private boolean isCrashed=false;
     private int contP=8;
     private int i =0;
     private int lastI;
+    private int speed;
+
+    public Car(int speed)
+    {
+        this.speed=speed;
+    }
+    public void sCar()
+    {
+        for (int x =0;x<this.speed;x++)
+        {
+            move();
+        }
+    }
     public Position getPos() {
         return pos;
     }
+
     public boolean isCrashed() {
         return isCrashed;
     }
-
     public void setCrashed(boolean crashed) {
         isCrashed = crashed;
 
     }
     public void move() {
         int newmove=0;
-
         if(lastI==i)
         {
             contP++;
         }
-        if(contP>10) {
+        if(this.getClass() == Vaca.class) {
+            andamento = ((Vaca) this).getMoveVaca();
+
+        }
+        else if (this.getClass() == Bois.class)
+        {
+            andamento = ((Bois) this).getMoveBois();
+        }
+        if(contP>andamento) {
             i = (int) (Math.random() * 4);
             contP=0;
         }
@@ -64,9 +83,13 @@ abstract  public class Car {
 
     @Override
     public String toString(){
-        return this.getClass().getSimpleName();
-    }
+        if(this.isCrashed == true)
+        {
+            return "Vitelo";
+        }
+        else return this.getClass().getSimpleName();
 
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
